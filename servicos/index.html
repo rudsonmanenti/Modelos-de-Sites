@@ -1,504 +1,337 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RM Clima Pro | Serviços Técnicos</title>
-  <meta name="description" content="Empresa especializada em instalação, manutenção e assistência técnica com atendimento rápido e profissional." />
-  <style>
-    :root{
-      --bg:#0b1020;
-      --bg-2:#11182d;
-      --card:#151f38;
-      --line:rgba(255,255,255,.08);
-      --text:#f4f7fb;
-      --muted:#a8b3c7;
-      --primary:#18c2ff;
-      --primary-2:#4de2c5;
-      --shadow:0 20px 60px rgba(0,0,0,.35);
-      --radius:22px;
-      --max:1200px;
-    }
-
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Arial, Helvetica, sans-serif;
-      background:linear-gradient(180deg,var(--bg),#070b16);
-      color:var(--text);
-      line-height:1.6;
-    }
-
-    a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
-    .container{width:min(92%, var(--max));margin:0 auto}
-
-    .header{
-      position:sticky;top:0;z-index:1000;
-      backdrop-filter:blur(14px);
-      background:rgba(11,16,32,.75);
-      border-bottom:1px solid var(--line);
-    }
-
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;
-      min-height:78px;
-    }
-
-    .logo{
-      font-size:1.35rem;font-weight:800;letter-spacing:.5px;
-    }
-
-    .logo span{color:var(--primary)}
-
-    .menu{
-      display:flex;gap:22px;align-items:center;
-    }
-
-    .menu a{
-      color:var(--muted);
-      transition:.25s;
-      font-weight:600;
-    }
-
-    .menu a:hover{color:#fff}
-
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:14px 22px;border-radius:999px;font-weight:700;
-      transition:.3s ease;border:1px solid transparent;
-      cursor:pointer;
-    }
-
-    .btn-primary{
-      background:linear-gradient(135deg,var(--primary),var(--primary-2));
-      color:#03111a;
-      box-shadow:0 10px 30px rgba(24,194,255,.25);
-    }
-
-    .btn-primary:hover{transform:translateY(-2px)}
-
-    .btn-outline{
-      border-color:var(--line);
-      color:#fff;
-      background:rgba(255,255,255,.03);
-    }
-
-    .hero{
-      padding:90px 0 60px;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:40px;
-      align-items:center;
-    }
-
-    .badge{
-      display:inline-block;
-      padding:8px 14px;
-      border:1px solid rgba(24,194,255,.25);
-      background:rgba(24,194,255,.08);
-      color:#b8efff;
-      border-radius:999px;
-      font-size:.92rem;
-      margin-bottom:18px;
-    }
-
-    .hero h1{
-      font-size:clamp(2.3rem, 5vw, 4.6rem);
-      line-height:1.05;
-      margin-bottom:18px;
-    }
-
-    .hero p{
-      color:var(--muted);
-      font-size:1.08rem;
-      max-width:640px;
-      margin-bottom:28px;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-bottom:28px;
-    }
-
-    .hero-stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-
-    .stat{
-      padding:18px;
-      background:rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      border-radius:18px;
-    }
-
-    .stat strong{
-      display:block;
-      font-size:1.35rem;
-      color:#fff;
-    }
-
-    .stat span{
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:28px;
-      box-shadow:var(--shadow);
-      padding:24px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      width:220px;height:220px;
-      background:radial-gradient(circle, rgba(24,194,255,.25), transparent 65%);
-      top:-50px;right:-50px;
-    }
-
-    .hero-image{
-      height:420px;
-      border-radius:22px;
-      background:
-        linear-gradient(rgba(6,14,29,.45), rgba(6,14,29,.7)),
-        url('https://images.unsplash.com/photo-1581092919535-7146ff1a5902?auto=format&fit=crop&w=1200&q=80') center/cover;
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    section{padding:80px 0}
-    .section-title{
-      font-size:clamp(1.8rem,3vw,3rem);
-      margin-bottom:12px;
-    }
-    .section-subtitle{
-      color:var(--muted);
-      max-width:700px;
-      margin-bottom:32px;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:26px;
-      transition:.3s;
-      box-shadow:var(--shadow);
-    }
-
-    .card:hover{
-      transform:translateY(-8px);
-      border-color:rgba(24,194,255,.25);
-    }
-
-    .icon{
-      width:54px;height:54px;border-radius:16px;
-      display:grid;place-items:center;
-      font-size:1.4rem;font-weight:800;
-      background:linear-gradient(135deg, rgba(24,194,255,.16), rgba(77,226,197,.16));
-      color:#c9f7ff;
-      margin-bottom:16px;
-    }
-
-    .card h3{margin-bottom:10px}
-    .card p{color:var(--muted)}
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:28px;
-      align-items:center;
-    }
-
-    .about-image{
-      min-height:420px;
-      border-radius:26px;
-      background:
-        linear-gradient(rgba(7,11,22,.35), rgba(7,11,22,.55)),
-        url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80') center/cover;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-    }
-
-    .list{
-      display:grid;
-      gap:14px;
-      margin-top:20px;
-    }
-
-    .list li{
-      list-style:none;
-      padding:16px 18px;
-      border-radius:16px;
-      background:rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      color:#dce5f1;
-    }
-
-    .cta{
-      background:linear-gradient(135deg, rgba(24,194,255,.14), rgba(77,226,197,.08));
-      border:1px solid rgba(24,194,255,.18);
-      border-radius:32px;
-      padding:36px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .map{
-      border-radius:24px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      min-height:350px;
-      box-shadow:var(--shadow);
-    }
-
-    .footer{
-      padding:28px 0;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-    }
-
-    .whatsapp{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      width:64px;height:64px;
-      border-radius:50%;
-      background:#25D366;
-      display:grid;place-items:center;
-      box-shadow:0 15px 35px rgba(37,211,102,.35);
-      z-index:999;
-      font-size:28px;
-      color:#fff;
-      font-weight:700;
-    }
-
-    .mobile-toggle{
-      display:none;
-      background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;
-    }
-
-    @media (max-width: 980px){
-      .hero-grid,.about-grid,.cards{grid-template-columns:1fr}
-      .hero-image{height:340px}
-    }
-
-    @media (max-width: 768px){
-      .mobile-toggle{display:block}
-      .menu{
-        display:none;
-        position:absolute;
-        top:78px;left:0;right:0;
-        flex-direction:column;
-        align-items:flex-start;
-        padding:20px;
-        background:#0d1427;
-        border-bottom:1px solid var(--line);
-      }
-      .menu.active{display:flex}
-      .hero-stats{grid-template-columns:1fr}
-      .cta{padding:26px}
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Serviços Premium</title>
+  <meta name="description" content="Empresa de serviços premium com atendimento profissional, agilidade, qualidade e confiança. Solicite seu orçamento pelo WhatsApp.">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="header">
     <div class="container nav">
-      <a href="#" class="logo">RM <span>ClimaPro</span></a>
-      <button class="mobile-toggle" id="mobileToggle">☰</button>
-      <nav class="menu" id="menu">
-        <a href="#servicos">Serviços</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#diferenciais">Diferenciais</a>
-        <a href="#localizacao">Localização</a>
-        <a href="https://wa.me/5541992274453" class="btn btn-primary">Solicitar Orçamento</a>
+      <a href="#inicio" class="logo">
+        <span>Prime</span> Serviços
+      </a>
+
+      <nav>
+        <ul class="menu">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#processo">Processo</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
       </nav>
+
+      <a class="nav-btn" href="https://wa.me/5541992274453?text=Olá,%20quero%20solicitar%20um%20orçamento." target="_blank">
+        Orçamento
+      </a>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="inicio">
+      <div class="hero-bg"></div>
       <div class="container hero-grid">
-        <div>
-          <span class="badge">Atendimento rápido e profissional</span>
-          <h1>Instalação, manutenção e assistência técnica com padrão profissional</h1>
+        <div class="hero-text">
+          <span class="section-tag">SERVIÇOS PREMIUM</span>
+          <h1>
+            Soluções profissionais com padrão elevado, atendimento rápido e imagem de empresa forte
+          </h1>
           <p>
-            Site modelo ideal para empresas de climatização, elétrica, manutenção e serviços técnicos.
-            Estrutura pronta para gerar contatos no WhatsApp e transmitir confiança ao cliente.
+            Apresente seus serviços com autoridade, confiança e sofisticação. Um site moderno para valorizar sua marca, aumentar a credibilidade e gerar mais pedidos de orçamento.
           </p>
+
           <div class="hero-actions">
-            <a href="https://wa.me/5541992274453" class="btn btn-primary">Chamar no WhatsApp</a>
-            <a href="#servicos" class="btn btn-outline">Ver Serviços</a>
+            <a href="https://wa.me/5541992274453?text=Olá,%20quero%20solicitar%20um%20orçamento." target="_blank" class="btn btn-primary">
+              Solicitar orçamento
+            </a>
+            <a href="#servicos" class="btn btn-outline">
+              Ver serviços
+            </a>
           </div>
 
-          <div class="hero-stats">
-            <div class="stat">
-              <strong>+500</strong>
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <strong>+250</strong>
               <span>Atendimentos realizados</span>
             </div>
-            <div class="stat">
-              <strong>24h</strong>
-              <span>Resposta rápida</span>
+            <div class="metric-card">
+              <strong>98%</strong>
+              <span>Clientes satisfeitos</span>
             </div>
-            <div class="stat">
-              <strong>100%</strong>
-              <span>Foco na satisfação</span>
+            <div class="metric-card">
+              <strong>Premium</strong>
+              <span>Padrão visual e execução</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-card">
-          <div class="hero-image"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="servicos">
-      <div class="container">
-        <h2 class="section-title">Serviços oferecidos</h2>
-        <p class="section-subtitle">
-          Estrutura ideal para destacar os principais serviços da empresa e facilitar o fechamento pelo WhatsApp.
-        </p>
-
-        <div class="cards">
-          <article class="card">
-            <div class="icon">01</div>
-            <h3>Instalação</h3>
-            <p>Instalação com acabamento profissional, segurança e desempenho para residências e empresas.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">02</div>
-            <h3>Manutenção Preventiva</h3>
-            <p>Reduza falhas, aumente a vida útil dos equipamentos e mantenha o sistema funcionando melhor.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">03</div>
-            <h3>Assistência Técnica</h3>
-            <p>Diagnóstico preciso, atendimento técnico especializado e solução rápida para o cliente.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="sobre">
-      <div class="container about-grid">
-        <div class="about-image"></div>
-        <div>
-          <h2 class="section-title">Profissionalismo que gera confiança</h2>
-          <p class="section-subtitle">
-            Esse modelo foi feito para empresas que precisam de uma presença digital forte, moderna e com aparência premium.
-          </p>
-
-          <ul class="list">
-            <li>✅ Design moderno e responsivo</li>
-            <li>✅ Botão direto para WhatsApp</li>
-            <li>✅ Estrutura para Google e SEO local</li>
-            <li>✅ Layout pensado para conversão</li>
+        <div class="hero-panel">
+          <div class="panel-badge">Atendimento profissional</div>
+          <h3>Por que clientes escolhem uma empresa com presença premium?</h3>
+          <ul>
+            <li>Passa mais confiança antes do primeiro contato</li>
+            <li>Valoriza o serviço e melhora a percepção de preço</li>
+            <li>Mostra organização, seriedade e profissionalismo</li>
+            <li>Facilita o fechamento pelo WhatsApp</li>
+            <li>Ajuda a destacar sua marca da concorrência</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="diferenciais">
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat-box">
+          <span>01</span>
+          <strong>Imagem profissional</strong>
+          <p>Seu negócio apresentado com visual premium e estrutura moderna.</p>
+        </div>
+        <div class="stat-box">
+          <span>02</span>
+          <strong>Mais autoridade</strong>
+          <p>Um site forte aumenta a confiança e ajuda a justificar melhor o valor cobrado.</p>
+        </div>
+        <div class="stat-box">
+          <span>03</span>
+          <strong>Mais conversão</strong>
+          <p>Estrutura pensada para transformar visitantes em pedidos de orçamento.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicos">
       <div class="container">
-        <h2 class="section-title">Por que escolher nossa empresa</h2>
-        <p class="section-subtitle">
-          Seção perfeita para quebrar objeções e valorizar o serviço.
-        </p>
+        <div class="section-header">
+          <span class="section-tag">NOSSOS SERVIÇOS</span>
+          <h2>Soluções com acabamento profissional e atendimento de alto nível</h2>
+          <p>
+            Esta estrutura serve para prestadores de serviços em geral: manutenção, instalação, climatização, elétrica, CFTV, redes, assistência técnica, reformas e outros.
+          </p>
+        </div>
 
-        <div class="cards">
-          <article class="card">
-            <div class="icon">A</div>
-            <h3>Equipe especializada</h3>
-            <p>Atendimento técnico qualificado, com foco em qualidade e agilidade.</p>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-top">
+              <span class="service-number">01</span>
+            </div>
+            <h3>Instalações</h3>
+            <p>Execução técnica, segura e organizada, com foco em qualidade e excelente acabamento.</p>
           </article>
 
-          <article class="card">
-            <div class="icon">B</div>
-            <h3>Atendimento humanizado</h3>
-            <p>Comunicação clara, suporte rápido e compromisso com o cliente.</p>
+          <article class="service-card">
+            <div class="service-top">
+              <span class="service-number">02</span>
+            </div>
+            <h3>Manutenção</h3>
+            <p>Atendimento ágil para correções preventivas e corretivas, aumentando a durabilidade dos sistemas.</p>
           </article>
 
-          <article class="card">
-            <div class="icon">C</div>
-            <h3>Compromisso com resultado</h3>
-            <p>Mais confiança, mais contatos e uma presença digital mais forte para sua empresa.</p>
+          <article class="service-card">
+            <div class="service-top">
+              <span class="service-number">03</span>
+            </div>
+            <h3>Reparos técnicos</h3>
+            <p>Diagnóstico eficiente e solução objetiva para problemas do dia a dia com padrão profissional.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-top">
+              <span class="service-number">04</span>
+            </div>
+            <h3>Atendimento residencial</h3>
+            <p>Serviços realizados com cuidado, respeito ao ambiente e compromisso com a satisfação do cliente.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-top">
+              <span class="service-number">05</span>
+            </div>
+            <h3>Atendimento comercial</h3>
+            <p>Soluções para empresas que precisam de agilidade, seriedade, presença e bom suporte.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-top">
+              <span class="service-number">06</span>
+            </div>
+            <h3>Orçamento rápido</h3>
+            <p>Contato prático pelo WhatsApp para facilitar a contratação e acelerar o fechamento.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="process" id="processo">
       <div class="container">
-        <div class="cta">
-          <div>
-            <h2 class="section-title" style="margin-bottom:8px">Solicite um orçamento agora</h2>
-            <p class="section-subtitle" style="margin:0">
-              Um site como esse pode ser adaptado rapidamente para qualquer empresa de serviços.
-            </p>
+        <div class="section-header">
+          <span class="section-tag">COMO FUNCIONA</span>
+          <h2>Um processo simples, profissional e eficiente</h2>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-step">1</div>
+            <h3>Contato inicial</h3>
+            <p>O cliente entra em contato e informa a necessidade de forma rápida e direta.</p>
           </div>
-          <a href="https://wa.me/5541992274453" class="btn btn-primary">Falar no WhatsApp</a>
+
+          <div class="process-card">
+            <div class="process-step">2</div>
+            <h3>Análise e orçamento</h3>
+            <p>A demanda é avaliada para apresentar uma solução clara com valor justo.</p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-step">3</div>
+            <h3>Execução do serviço</h3>
+            <p>O trabalho é realizado com organização, atenção aos detalhes e compromisso com qualidade.</p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-step">4</div>
+            <h3>Entrega final</h3>
+            <p>Finalização com acabamento profissional e foco total na satisfação do cliente.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="localizacao">
-      <div class="container">
-        <h2 class="section-title">Nossa localização</h2>
-        <p class="section-subtitle">Você pode trocar esse mapa pelo endereço do seu cliente.</p>
+    <section class="about">
+      <div class="container about-grid">
+        <div class="about-left">
+          <span class="section-tag">SOBRE A EMPRESA</span>
+          <h2>Uma apresentação premium muda a forma como o cliente enxerga seu serviço</h2>
+          <p>
+            Empresas e profissionais que se apresentam com mais qualidade visual transmitem mais confiança, organização e valor. Isso influencia diretamente na decisão do cliente.
+          </p>
+          <p>
+            Este modelo foi pensado para gerar impacto, elevar a percepção da sua marca e facilitar o fechamento de novos serviços.
+          </p>
+        </div>
 
-        <div class="map">
-          <iframe
-            src="https://www.google.com/maps?q=Joinville%20SC&output=embed"
-            width="100%"
-            height="350"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy">
-          </iframe>
+        <div class="about-right">
+          <div class="about-item">
+            <strong>Visual sofisticado</strong>
+            <p>Design escuro com dourado para transmitir autoridade e elegância.</p>
+          </div>
+          <div class="about-item">
+            <strong>Estrutura estratégica</strong>
+            <p>Seções pensadas para apresentar, provar valor e incentivar o contato.</p>
+          </div>
+          <div class="about-item">
+            <strong>Posicionamento premium</strong>
+            <p>Ideal para prestadores que querem cobrar melhor e parecer maiores.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="diferenciais">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">DIFERENCIAIS</span>
+          <h2>O que faz este modelo parecer nível empresa grande</h2>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>Design premium</h3>
+            <p>Visual elegante e refinado, muito superior a um site comum.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Autoridade visual</h3>
+            <p>Ajuda a posicionar seu negócio como mais sério e valorizado.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Foco em orçamento</h3>
+            <p>Todos os elementos direcionam o visitante para entrar em contato.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Alta adaptação</h3>
+            <p>Serve para vários nichos de serviços sem precisar mudar a estrutura toda.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" id="depoimentos">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">DEPOIMENTOS</span>
+          <h2>Confiança de quem já contratou</h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <p>
+              “Atendimento excelente, serviço muito bem feito e apresentação extremamente profissional. Passou muita confiança desde o início.”
+            </p>
+            <strong>Cliente 01</strong>
+          </div>
+
+          <div class="testimonial-card">
+            <p>
+              “Pontual, organizado e com um padrão acima do normal. Dá para perceber o cuidado em cada detalhe.”
+            </p>
+            <strong>Cliente 02</strong>
+          </div>
+
+          <div class="testimonial-card">
+            <p>
+              “Gostei muito da rapidez no orçamento e da qualidade no atendimento. Recomendo tranquilamente.”
+            </p>
+            <strong>Cliente 03</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contato">
+      <div class="container cta-box">
+        <div class="cta-text">
+          <span class="section-tag">PRONTO PARA ATENDER MELHOR?</span>
+          <h2>Transforme sua presença online em uma máquina de credibilidade e orçamento</h2>
+          <p>
+            Use um site premium para apresentar sua empresa com mais força, passar mais confiança e conquistar mais clientes.
+          </p>
+        </div>
+
+        <div class="cta-card">
+          <p><strong>Telefone:</strong> (41) 99227-4453</p>
+          <p><strong>Atendimento:</strong> Segunda a sábado</p>
+          <p><strong>WhatsApp:</strong> resposta rápida</p>
+          <a href="https://wa.me/5541992274453?text=Olá,%20quero%20solicitar%20um%20orçamento." target="_blank" class="btn btn-primary">
+            Falar agora no WhatsApp
+          </a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">
-      © 2026 RM ClimaPro - Todos os direitos reservados.
+    <div class="container footer-content">
+      <div>
+        <h3><span>Prime</span> Serviços</h3>
+        <p>Imagem forte, atendimento profissional e presença premium para o seu negócio.</p>
+      </div>
+      <div>
+        <p>© 2026 Prime Serviços Premium</p>
+        <p>Todos os direitos reservados</p>
+      </div>
     </div>
   </footer>
 
-  <a class="whatsapp" href="https://wa.me/5541992274453" aria-label="WhatsApp">✆</a>
+  <a class="whatsapp-fixed" href="https://wa.me/5541992274453?text=Olá,%20quero%20solicitar%20um%20orçamento." target="_blank">
+    WhatsApp
+  </a>
 
-  <script>
-    const mobileToggle = document.getElementById('mobileToggle');
-    const menu = document.getElementById('menu');
-
-    mobileToggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
-    });
-  </script>
 </body>
 </html>
